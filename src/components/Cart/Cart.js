@@ -7,19 +7,23 @@ import CartItem from "./CartItem/CartItem";
 
 const Cart = ({ cart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
+  const [totalDiscount, setTotalDiscount] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     let items = 0;
     let price = 0;
+    let discount = 0;
 
     cart.forEach((item) => {
       items += item.qty;
       price += item.qty * item.price;
+      discount += item.qty * item.discount;
     });
 
     setTotalItems(items);
     setTotalPrice(price);
+    setTotalDiscount(discount);
   }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
 
   return (
@@ -34,6 +38,7 @@ const Cart = ({ cart }) => {
         <div className={styles.summary__price}>
           <span>TOTAL: ({totalItems} items)</span>
           <span>$ {totalPrice}</span>
+          Discount: <span>$ {totalDiscount}</span>
         </div>
         <button className={styles.summary__checkoutBtn}>
           Proceed To Checkout

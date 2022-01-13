@@ -1,0 +1,106 @@
+0:00 - 10:19
+
+* Instalar Redux , react-redux.
+
+* Configuracón de Redux Store Para la Aplicación
+
+// Redux
+import { Provider } from "react-redux";
+import store from "./redux/store";
+ReactDOM.render(
+<React.StrictMode>
+<Provider store={store}>
+<App />
+</Provider>
+</React.StrictMode>,
+document.getElementById("root")
+);
+
+10:19 - 20:00
+
+Instalación de Redux-Dev-Tools Extension y su configuración en store.js
+
+14:22
+
+Pasa el shopping reducer al combine reducer
+
+14:26
+Los types y por lo tanto definirá todas las acciones que se van a ejecutar
+
+16:00 Actions
+
+20:00 - 30:00
+
+Creación de ShoppinReducer.js
+
+25:27 Connect Function para traerme el estado a producto y puder trabajar con valores dinámicos
+
+
+
+
+
+En Blanco Intencionalmente
+
+
+
+
+
+
+
+25:47 Voy a poder escoger que estado de mi redux store pasar a mi componente
+
+const Products = ({ products }) => {
+return (
+	<div className={styles.products}>
+	{products.map((product) => (
+	<Product key={product.id} product={product} />
+   )  )
+}
+</div>
+   );
+};
+
+const mapStateToProps = (state) => {
+return {
+    products: state.shop.products, //shop por que asi se nombró en combineReducers
+                                                       //y ese mismo shop se refiere a lo que sea que haya en el INITIAL
+                                                       //STATE de shopping-reducers.js
+};
+};
+export default connect(mapStateToProps)(Products);
+
+Lo que me va a permitir 
+
+{products.map((product) => (
+<Product key={product.id} product={product} />
+))}
+
+ 
+30:00 - 40:00
+
+Pasar todo a manera dinámica a Product.js
+
+31:38 ADD_TO_CARD El PRIMER REDUCER
+
+1. Obtener los Items de productos:
+
+     state.products.find((product) => product.id === action.payload.id);
+
+2. Check if Item is in cart already
+
+const inCart = state.cart.find((item) => item.id === action.payload.id ? true : false);
+
+3. 
+return {
+    ...state, 
+    valueA: 
+
+This will update the whole state with the new object which has a updated property valueA and keping all others as existing values.
+
+
+
+
+
+
+
+

@@ -9,6 +9,7 @@ import {
   addToCart,
 } from "../../../redux/Shopping/shopping-actions";
 
+// addToCart and loadCurrentItem are defined in src/redux/Shopping/shopping-actions.js
 const Product = ({ product, addToCart, loadCurrentItem }) => {
   return (
     <div className={styles.product}>

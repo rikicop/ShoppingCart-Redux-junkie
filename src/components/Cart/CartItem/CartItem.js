@@ -6,6 +6,7 @@ import {
   adjustItemQty,
   removeFromCart,
 } from "../../../redux/Shopping/shopping-actions";
+import { FaTrashAlt } from "react-icons/fa";
 
 const CartItem = ({ item, adjustQty, removeFromCart }) => {
   const [input, setInput] = useState(item.qty);
@@ -26,6 +27,9 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
         <p className={styles.details__title}>{item.title}</p>
         <p className={styles.details__desc}>{item.description}</p>
         <p className={styles.details__price}>$ {item.price}</p>
+        <p className={styles.details__price}>
+          Discount Applied $ {item.discount}
+        </p>
       </div>
       <div className={styles.cartItem__actions}>
         <div className={styles.cartItem__qty}>
@@ -43,10 +47,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
           onClick={() => removeFromCart(item.id)}
           className={styles.actions__deleteItemBtn}
         >
-          <img
-            src="https://image.flaticon.com/icons/svg/709/709519.svg"
-            alt=""
-          />
+          <FaTrashAlt />
         </button>
       </div>
     </div>
